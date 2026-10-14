@@ -1,3 +1,5 @@
+import MovieRounded from "@mui/icons-material/MovieRounded";
+
 interface CreateListScreenProps {
   onCreate: () => void;
 }
@@ -6,7 +8,9 @@ export function CreateListScreen({ onCreate }: CreateListScreenProps) {
   return (
     <main className="centered">
       <div className="card">
-        <h1>🎬 Movietracker</h1>
+        <h1 className="brand-title">
+          <MovieRounded fontSize="inherit" /> Movietracker
+        </h1>
         <p>
           Erstelle eine neue Liste und schicke den Link an dein Gegenüber. Wer
           den Link hat, kann die Liste sehen und bearbeiten.

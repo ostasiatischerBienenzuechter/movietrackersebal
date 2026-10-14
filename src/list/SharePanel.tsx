@@ -1,3 +1,6 @@
+import CheckRounded from "@mui/icons-material/CheckRounded";
+import ContentCopyRounded from "@mui/icons-material/ContentCopyRounded";
+import ShareRounded from "@mui/icons-material/ShareRounded";
 import { useState } from "react";
 import { shareUrl } from "./listId";
 
@@ -45,11 +48,19 @@ export function SharePanel({ listId, onClose }: SharePanelProps) {
         <div className="row">
           {canShare && (
             <button type="button" onClick={() => void share()}>
-              Teilen
+              <ShareRounded fontSize="small" /> Teilen
             </button>
           )}
           <button type="button" onClick={() => void copy()}>
-            {copied ? "Kopiert ✓" : "Link kopieren"}
+            {copied ? (
+              <>
+                <CheckRounded fontSize="small" /> Kopiert
+              </>
+            ) : (
+              <>
+                <ContentCopyRounded fontSize="small" /> Link kopieren
+              </>
+            )}
           </button>
         </div>
         <button type="button" className="primary" onClick={onClose}>

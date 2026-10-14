@@ -1,5 +1,8 @@
+import MovieRounded from "@mui/icons-material/MovieRounded";
+import ShareRounded from "@mui/icons-material/ShareRounded";
 import { Avatar } from "./profile/Avatar";
 import type { Profile } from "./profile/types";
+import { ThemeToggle } from "./theme/ThemeToggle";
 
 interface HeaderProps {
   profile: Profile | null;
@@ -10,10 +13,14 @@ interface HeaderProps {
 export function Header({ profile, onEditProfile, onShare }: HeaderProps) {
   return (
     <header className="header">
-      <span className="brand">🎬 Movietracker</span>
+      <span className="brand">
+        <MovieRounded /> Movietracker
+      </span>
       <div className="header-actions">
+        <ThemeToggle />
         {onShare != null && (
           <button type="button" onClick={onShare}>
+            <ShareRounded fontSize="small" />
             Teilen
           </button>
         )}

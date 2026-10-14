@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { subscribeToMovies } from "./movieRepository";
+import { refreshPosters, subscribeToMovies } from "./movieRepository";
 import type { Movie } from "./types";
 
 interface MoviesState {
@@ -24,6 +24,10 @@ export function useMovies(listId: string): MoviesState {
       ),
     [listId],
   );
+
+  useEffect(() => {
+    void refreshPosters(listId, state.movies).catch(() => undefined);
+  }, [listId, state.movies]);
 
   return state;
 }

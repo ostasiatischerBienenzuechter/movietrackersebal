@@ -1,3 +1,8 @@
+import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
+import DeleteRounded from "@mui/icons-material/DeleteRounded";
+import EditRounded from "@mui/icons-material/EditRounded";
+import MovieRounded from "@mui/icons-material/MovieRounded";
+import UndoRounded from "@mui/icons-material/UndoRounded";
 import { useState } from "react";
 import { Avatar } from "../profile/Avatar";
 import { TitleForm } from "./TitleForm";
@@ -46,7 +51,9 @@ export function MovieItem({
       {posterUrl != null ? (
         <img className="poster" src={posterUrl} alt="" loading="lazy" />
       ) : (
-        <span className="poster poster-placeholder">🎬</span>
+        <span className="poster poster-placeholder">
+          <MovieRounded />
+        </span>
       )}
       <span className="movie-title">{title}</span>
       <Avatar
@@ -64,7 +71,7 @@ export function MovieItem({
           }
           onClick={onToggleWatched}
         >
-          {watched ? "↩️" : "✅"}
+          {watched ? <UndoRounded /> : <CheckCircleRounded />}
         </button>
         <button
           type="button"
@@ -72,7 +79,7 @@ export function MovieItem({
           aria-label="Bearbeiten"
           onClick={() => setEditing(true)}
         >
-          ✏️
+          <EditRounded />
         </button>
         <button
           type="button"
@@ -80,7 +87,7 @@ export function MovieItem({
           aria-label="Löschen"
           onClick={onDelete}
         >
-          🗑️
+          <DeleteRounded />
         </button>
       </div>
     </li>

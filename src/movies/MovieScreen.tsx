@@ -1,3 +1,5 @@
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import SearchRounded from "@mui/icons-material/SearchRounded";
 import { useState } from "react";
 import type { Profile } from "../profile/types";
 import { MovieItem } from "./MovieItem";
@@ -155,7 +157,7 @@ export function MovieScreen({ listId, profile }: MovieScreenProps) {
             aria-label="Schließen"
             onClick={() => setNotice(null)}
           >
-            ✖️
+            <CloseRounded />
           </button>
         </div>
       )}
@@ -168,18 +170,21 @@ export function MovieScreen({ listId, profile }: MovieScreenProps) {
             aria-label="Schließen"
             onClick={() => setNotice(null)}
           >
-            ✖️
+            <CloseRounded />
           </button>
         </div>
       )}
 
-      <input
-        className="search"
-        type="search"
-        placeholder="🔍 Suchen"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <label className="search">
+        <SearchRounded />
+        <input
+          type="search"
+          placeholder="Suchen"
+          aria-label="Suchen"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </label>
 
       {renderList()}
     </main>

@@ -15,7 +15,7 @@ import {
 import { getDb } from "../firebase/firebase";
 import type { Profile } from "../profile/types";
 import { titleKey } from "./movieRules";
-import { findPoster } from "./posterLookup";
+import { findPoster, isTmdbPoster } from "./posterLookup";
 import type { Movie } from "./types";
 
 /** Firestore allows at most 500 writes per batch. */
@@ -81,7 +81,7 @@ export async function addMovie(
     createdAt: new Date(),
     watchedAt: null,
   });
-  await updateDoc(ref, { posterUrl: await findPoster(title) });
+  await updateDoc(ref, { posterUrl: (await findPoster(title)) ?? null });
 }
 
 export async function renameMovie(
@@ -91,7 +91,27 @@ export async function renameMovie(
 ): Promise<void> {
   const ref = doc(moviesCollection(listId), id);
   await updateDoc(ref, { title, titleKey: titleKey(title), posterUrl: null });
-  await updateDoc(ref, { posterUrl: await findPoster(title) });
+  await updateDoc(ref, { posterUrl: (await findPoster(title)) ?? null });
+}
+
+/** Movies already re-checked in this session, so each is looked up at most once. */
+const refreshed = new Set<string>();
+
+/**
+ * Replaces posters from the old Wikipedia lookup (and missing ones) with TMDB
+ * posters. Older or missing images are kept when TMDB has nothing.
+ */
+export async function refreshPosters(
+  listId: string,
+  movies: Movie[],
+): Promise<void> {
+  for (const movie of movies) {
+    if (isTmdbPoster(movie.posterUrl) || refreshed.has(movie.id)) continue;
+    refreshed.add(movie.id);
+    const posterUrl = await findPoster(movie.title);
+    if (posterUrl == null || posterUrl === movie.posterUrl) continue;
+    await updateDoc(doc(moviesCollection(listId), movie.id), { posterUrl });
+  }
 }
 
 export async function setWatched(

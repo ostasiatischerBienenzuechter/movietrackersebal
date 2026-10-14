@@ -15,12 +15,35 @@
   --border: color-mix(in srgb, var(--jet-black) 75%, var(--blush-rose));
   --danger: #ff6b6b;
   --notice-bg: var(--dark-raspberry);
+  --accent-text: var(--accent);
   color-scheme: dark;
   font-family:
     "Quicksand Variable", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background: var(--bg);
   color: var(--text);
+}
+
+/* The palette has no dark tone, so text colors are darkened mixes of it for readability. */
+:root[data-theme="day"] {
+  --white: #ffffffff;
+  --pearl-aqua: #84dcc6ff;
+  --aquamarine: #a5ffd6ff;
+  --powder-blush: #ffa69eff;
+  --grapefruit-pink: #ff686bff;
+
+  --bg: var(--white);
+  --card: color-mix(in srgb, var(--aquamarine) 22%, var(--white));
+  --sunken: var(--white);
+  --text: color-mix(in srgb, var(--pearl-aqua) 22%, black);
+  --muted: color-mix(in srgb, var(--pearl-aqua) 45%, black);
+  --accent: var(--grapefruit-pink);
+  --accent-text: color-mix(in srgb, var(--grapefruit-pink) 70%, black);
+  --on-accent: var(--text);
+  --border: var(--pearl-aqua);
+  --danger: color-mix(in srgb, var(--grapefruit-pink) 70%, black);
+  --notice-bg: color-mix(in srgb, var(--powder-blush) 35%, var(--white));
+  color-scheme: light;
 }
 
 * {
@@ -129,6 +152,40 @@ input {
 .brand {
   font-weight: 700;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent-text);
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-left: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--sunken);
+  color: var(--muted);
+}
+
+.search input {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding-left: 0;
+  outline: none;
+}
+
+.search:focus-within {
+  border-color: var(--accent);
 }
 
 .header-actions {
@@ -225,7 +282,7 @@ input {
 
 .tab.active {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
 
@@ -295,7 +352,7 @@ input {
 .poster-placeholder {
   display: grid;
   place-items: center;
-  font-size: 1.5rem;
+  color: var(--muted);
 }
 
 .movie-title {
