@@ -11,8 +11,8 @@
   --notice-bg: #3b2d22;
   color-scheme: dark;
   font-family:
-    system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    "Inter Variable", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background: var(--bg);
   color: var(--text);
 }
