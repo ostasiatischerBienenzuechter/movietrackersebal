@@ -1,0 +1,9 @@
+node_modules
+dist
+*.local
+.env
+.env.*
+opencode.json
+plan.md
+firestore.rules
+README.md
