@@ -1,17 +1,23 @@
 :root {
-  --bg: #1f1915;
-  --card: #2c241e;
-  --sunken: #17120f;
-  --text: #f7eee4;
-  --muted: #b9a999;
-  --accent: #f4a259;
-  --on-accent: #1f1915;
-  --border: #43372d;
-  --danger: #ff8a73;
-  --notice-bg: #3b2d22;
+  --soft-blush: #ffd9daff;
+  --blush-rose: #ea638cff;
+  --dark-raspberry: #89023eff;
+  --jet-black: #30343fff;
+  --carbon-black: #1b2021ff;
+
+  --bg: var(--carbon-black);
+  --card: var(--jet-black);
+  --sunken: var(--carbon-black);
+  --text: var(--soft-blush);
+  --muted: color-mix(in srgb, var(--soft-blush) 60%, var(--jet-black));
+  --accent: var(--blush-rose);
+  --on-accent: var(--carbon-black);
+  --border: color-mix(in srgb, var(--jet-black) 75%, var(--blush-rose));
+  --danger: #ff6b6b;
+  --notice-bg: var(--dark-raspberry);
   color-scheme: dark;
   font-family:
-    "Inter Variable", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    "Quicksand Variable", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background: var(--bg);
   color: var(--text);
