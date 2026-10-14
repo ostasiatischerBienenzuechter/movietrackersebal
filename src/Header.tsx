@@ -10,7 +10,7 @@ interface HeaderProps {
 export function Header({ profile, onEditProfile, onShare }: HeaderProps) {
   return (
     <header className="header">
-      <span className="brand">🎬 Filmliste</span>
+      <span className="brand">🎬 Movietracker</span>
       <div className="header-actions">
         {onShare != null && (
           <button type="button" onClick={onShare}>

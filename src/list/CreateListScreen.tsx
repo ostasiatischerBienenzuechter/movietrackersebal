@@ -6,7 +6,7 @@ export function CreateListScreen({ onCreate }: CreateListScreenProps) {
   return (
     <main className="centered">
       <div className="card">
-        <h1>🎬 Unsere Filmliste</h1>
+        <h1>🎬 Movietracker</h1>
         <p>
           Erstelle eine neue Liste und schicke den Link an dein Gegenüber. Wer
           den Link hat, kann die Liste sehen und bearbeiten.

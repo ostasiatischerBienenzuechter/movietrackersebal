@@ -22,7 +22,7 @@ export function SharePanel({ listId, onClose }: SharePanelProps) {
 
   async function share() {
     try {
-      await navigator.share({ title: "Unsere Filmliste", url });
+      await navigator.share({ title: "Movietracker", url });
     } catch {
       // Cancelled by the user.
     }
