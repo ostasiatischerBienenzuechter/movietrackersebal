@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
-import { applyTheme, loadTheme } from "./theme/theme";
+import { App } from "@/app/App";
+import { applyTheme, loadTheme } from "@/features/theme";
 import "@fontsource-variable/quicksand";
-import "./styles.css";
+import "@/styles/global.css";
 
 applyTheme(loadTheme());
 
